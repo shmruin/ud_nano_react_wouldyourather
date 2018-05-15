@@ -1,31 +1,27 @@
 import React from 'react'
+import UserInfoNav from '../components/UserInfoNav'
 import { NavLink } from 'react-router-dom'
 
 export default function Nav() {
     return (
-        <nav className='nav'>
-            <ul>
-                <li>
-                    <NavLink to='/' exact activeClassName='active'>
-                        DashBoard
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/leaderboard' activeClassName='active'>
-                        LeaderBoard
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/add' activeClassName='active'>
-                        Create New Poll
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/login' activeClassName='active'>
-                        Sign Out
-                    </NavLink>
-                </li>
-            </ul>
+        <nav className='navbar navbar-expand-sm navbar-light bg-light mb-3'>
+            <div className='container'>
+                <UserInfoNav />
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">DashBoard</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">LeaderBoard</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">Create New Poll</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     )
 }
