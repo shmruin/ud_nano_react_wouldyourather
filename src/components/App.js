@@ -14,16 +14,21 @@ class App extends Component {
 
     render() {
         return (
-            <Fragment>
-                <LoadingBar />
-                <div className='container'>
-                    <Nav />
-                    {this.props.loading === true
-                        ? null
-                        : <VoteContent />
-                    }
-                </div>
-            </Fragment>
+            <Router>
+                <Fragment>
+                    <LoadingBar />
+                    <div className='container'>
+                        <Nav />
+                        {this.props.loading === true
+                            ? null
+                            :  <div>
+                                    <Route path='/' exact component={Dashboard} />
+                                    <Route path='/questions/:id' component={VoteContent} />
+                                </div>
+                        }
+                    </div>
+                </Fragment>
+            </Router>
         )
     }
 }

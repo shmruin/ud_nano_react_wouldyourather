@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS } from '../actions/questions'
+import { RECEIVE_QUESTIONS, ANSWER_QUESTION } from '../actions/questions'
 
 export default function questions(state = {}, action) {
     switch(action.type) {
@@ -7,6 +7,19 @@ export default function questions(state = {}, action) {
                 ...state,
                 ...action.questions
             }
+        case ANSWER_QUESTION:
+
+            let modifiedUser = action.authedUser
+            let modifiedQid = action.qid
+            let modifiedAnswer = action.answer
+
+            //Check if votes in option one of two already has this id. If so, erase it first.
+            state[modifiedQid]['optionOne'].votes = state[modifiedQid]['optionOne'].votes.filter((user) => user !== modifiedUser)
+            state[modifiedQid]['optionTwo'].votes = state[modifiedQid]['optionTwo'].votes.filter((user) => user !== modifiedUser)
+
+            state[modifiedQid][modifiedAnswer].votes.push(modifiedUser)
+            
+            return state
         default:
             return state
     }

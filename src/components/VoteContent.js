@@ -1,28 +1,43 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Title from './Title'
+import cardImg from '../img/crossRoad.jpg'
+import AorB from './AorB'
+import { handleAnswerQuestion } from '../actions/shared'
+
 
 class VoteContent extends Component {
+    onSelectOption = (e, option) => {
+        e.preventDefault()
+
+        //TODO: After dispatch redirect to the result page
+
+        const { dispatch, id, authedUser} = this.props
+
+        dispatch(handleAnswerQuestion({
+            authedUser: authedUser,
+            qid: id,
+            answer: option,
+        }))
+    }
+
     render() {
         return (
-            <div>
+            <div className='container w-75'>
                 <Title />
-                Hi!
+                <AorB onSelectOption={this.onSelectOption}/>
             </div>
         )
     }
 }
 
-function mapStateToProps({ questions, users, authedUser }) {
-    console.log(questions)
-    console.log(authedUser)
-    console.log(users)
+
+function mapStateToProps({ authedUser }, props) {
+    const { id } = props.match.params
+
     return {
+        id,
         authedUser: authedUser,
-        users: users,
-        questions: questions,
-        questionIds: Object.keys(questions)
-            .sort((a, b) => questions[b].timestamp - questions[b].timestamp)
     }
 }
 

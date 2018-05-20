@@ -1,4 +1,4 @@
-import { RECEIVE_USERS } from '../actions/users'
+import { RECEIVE_USERS, ANSWER_QUESTION_BY_USER } from '../actions/users'
 
 export default function users(state = {}, action) {
     switch (action.type) {
@@ -7,6 +7,17 @@ export default function users(state = {}, action) {
                 ...state,
                 ...action.users
             }
+        case ANSWER_QUESTION_BY_USER:
+            //1. Add to users.authedUser.answers new qid of ontion or REPLACE 
+            //2. Add to questions.id.optionX.votes of name. if already exists, then no effect
+
+            let modifiedUser = action.authedUser
+            let modifiedQid = action.qid
+            let modifiedAnswer = action.answer
+
+            Object.assign(state[modifiedUser].answers, { [modifiedQid]: modifiedAnswer })
+
+            return state
         default:
             return state
     }

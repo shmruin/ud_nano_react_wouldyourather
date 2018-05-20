@@ -11,7 +11,7 @@ class Dashboard extends Component {
     intoVote = (e, id) => {
         e.preventDefault()
 
-        //TODO: Goto poll page
+        this.props.history.push(`/questions/${id}`)
     }
 
     filterAnsweredList = (e, val) => {
@@ -55,9 +55,6 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ questions, users, authedUser }) {
-    console.log(questions)
-    console.log(authedUser)
-    console.log(users)
     return {
         authedUser: authedUser,
         users: users,
