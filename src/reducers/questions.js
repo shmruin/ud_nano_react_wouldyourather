@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS, ANSWER_QUESTION } from '../actions/questions'
+import { RECEIVE_QUESTIONS, ANSWER_QUESTION, SAVE_QUESTION } from '../actions/questions'
 
 export default function questions(state = {}, action) {
     switch(action.type) {
@@ -8,7 +8,6 @@ export default function questions(state = {}, action) {
                 ...action.questions
             }
         case ANSWER_QUESTION:
-
             let modifiedUser = action.authedUser
             let modifiedQid = action.qid
             let modifiedAnswer = action.answer
@@ -20,6 +19,11 @@ export default function questions(state = {}, action) {
             state[modifiedQid][modifiedAnswer].votes.push(modifiedUser)
             
             return state
+        case SAVE_QUESTION:
+            return {
+                ...state,
+                [action.question.id]: action.question,
+            }
         default:
             return state
     }

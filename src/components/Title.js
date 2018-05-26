@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 
-export default function Title() {
+export default function Title(props) {
     return (
         <div className='container'>
-            <h2 className='dashboard-title text-center mt-5'>Would You Rather...?</h2>
+            <h2 className='dashboard-title text-center mt-5'>{props.mainTitle}</h2>
             <blockquote className="blockquote text-muted text-center mb-5">
-                <p>Give it a Vote Today!</p>
+                <p>{props.subTitle}</p>
             </blockquote>
         </div>
     )
+}
+
+Title.propTypes = {
+    mainTitle: PropTypes.string.isRequired,
+    subTitle: PropTypes.string.isRequired,
 }

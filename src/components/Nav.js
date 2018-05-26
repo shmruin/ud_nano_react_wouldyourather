@@ -9,16 +9,25 @@ export default function Nav() {
                 <UserInfoNav />
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">DashBoard</a>
+                        {/* NavLink with BS4 nav-link */}
+                        <NavLink to='/' exact className='nav-link' style={{ textDecoration: 'none' }}>
+                            DashBoard
+                        </NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">LeaderBoard</a>
+                        <NavLink to='/leaderboard' className='nav-link' style={{ textDecoration: 'none' }}>
+                            LeaderBoard
+                        </NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Create New Poll</a>
+                        <NavLink to='/add' className='nav-link' style={{ textDecoration: 'none' }}>
+                            Create New Poll
+                        </NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Sign Out</a>
+                        <NavLink to='/789' className='nav-link' style={{ textDecoration: 'none' }}>
+                            Sign Out
+                        </NavLink>
                     </li>
                 </ul>
             </div>

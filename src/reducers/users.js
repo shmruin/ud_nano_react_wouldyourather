@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, ANSWER_QUESTION_BY_USER } from '../actions/users'
+import { RECEIVE_USERS, ANSWER_QUESTION_BY_USER, SAVE_QUESTION_BY_USER } from '../actions/users'
 
 export default function users(state = {}, action) {
     switch (action.type) {
@@ -17,6 +17,10 @@ export default function users(state = {}, action) {
 
             Object.assign(state[modifiedUser].answers, { [modifiedQid]: modifiedAnswer })
 
+            return state
+        case SAVE_QUESTION_BY_USER:
+            state[action.question.author].questions.push(action.question.id)
+            
             return state
         default:
             return state

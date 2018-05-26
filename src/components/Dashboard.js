@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import Title from './Title'
 
 
+// TODO: Sorting by timestamps
+
+
 class Dashboard extends Component {
     state = {
         btnActive: 'answered',
@@ -14,6 +17,7 @@ class Dashboard extends Component {
         this.props.history.push(`/questions/${id}`)
     }
 
+    //Answered or UnAnswered Switching
     filterAnsweredList = (e, val) => {
         e.preventDefault()
 
@@ -31,7 +35,7 @@ class Dashboard extends Component {
 
         return (
             <div className='container w-75'>
-                <Title />
+                <Title mainTitle='Would You Rather...?' subTitle='Give it a Vote Today!'/>
                 <div className='btn-group d-flex mx-auto mb-2' role='group' onClick={(e) => this.filterAnsweredList(e, e.target.value)}>
                     <button className={'btn btn-outline-primary w-100 ' + (this.state.btnActive === 'answered' ? 'active' : '')} value='answered'>Answered</button>
                     <button className={'btn btn-outline-secondary w-100 ' + (this.state.btnActive === 'unanswered' ? 'active' : '')} value='unanswered'>Unanswered</button>
