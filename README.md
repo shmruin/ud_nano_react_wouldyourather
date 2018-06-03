@@ -4,17 +4,22 @@
 
 ![Alt text](screenshots/wyr1.PNG?raw=true "main page view")
 
-**2. overall process**
+**2. voting page**
 
-![Alt text](screenshots/totla1.gif?raw=true "overall gif")
+![Alt text](screenshots/wyr2.PNG?raw=true "main page view")
 
-**3. voting, leaderboard, creating a poll**
 
-![Alt text](screenshots/totla2.gif?raw=true "overall gif")
+**3. overall process**
 
-**4. sign up & sign in**
+![Alt text](screenshots/total1.gif?raw=true "overall gif")
 
-![Alt text](screenshots/totla3.gif?raw=true "overall gif")
+**4. voting, leaderboard, creating a poll**
+
+![Alt text](screenshots/total2.gif?raw=true "overall gif")
+
+**5. sign up & sign in**
+
+![Alt text](screenshots/total3.gif?raw=true "overall gif")
 
 
 ## Introduction
@@ -45,8 +50,15 @@ Working on the structure of js files, all code inside them, and dealing with fea
 
 ## Stucture
 
+**React Source**
 
+![Alt text](screenshots/tree.PNG?raw=true "source tree view")
 
+**Aws Source**
+
+![Alt text](screenshots/S3_Image_Post.png?raw=true "aws tree view")
+
+With referring to this [tutorial](https://beomi.github.io/2017/12/15/Direct-upload-to-S3-with-Lambda/)
 
 ## How to run
 - `yarn install` and then `yarn start` in this root folder
