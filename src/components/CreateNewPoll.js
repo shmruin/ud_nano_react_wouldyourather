@@ -13,6 +13,7 @@ class CreateNewPoll extends Component {
     state = {
         inputOptionOne: null,
         inputOptionTwo: null,
+        toHome: false,
     }
 
     handleChange = (e, option) => {
@@ -72,13 +73,13 @@ class CreateNewPoll extends Component {
                 <form className='mt-5' onSubmit={this.handleSubmit}>
                     <div className='form-group input-group-lg'>
                         <div className='input-group-prepend'>
-                            <span className='input-group-text' id='basic-addon1'><i className='far fa-arrow-alt-circle-right'></i></span>
+                            <span className='input-group-text' id='option1'><i className='far fa-arrow-alt-circle-right'></i></span>
                             <input ref='optionOneInput' type='text' className='form-control' placeholder="Option One is..." onChange={(e) => this.handleChange(e, 'optionOne')} />
                         </div>
                     </div>
                     <div className='form-group input-group-lg'>
                         <div className='input-group-prepend'>
-                            <span className='input-group-text' id='basic-addon1'><i className='far fa-arrow-alt-circle-right'></i></span>
+                            <span className='input-group-text' id='option2'><i className='far fa-arrow-alt-circle-right'></i></span>
                             <input ref='optionTwoInput' type='text' className='form-control' placeholder="Option Two is..." onChange={(e) => this.handleChange(e, 'optionTwo')} />
                         </div>
                     </div>

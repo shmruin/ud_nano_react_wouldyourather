@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
 import LoadingBar from 'react-redux-loading'
@@ -8,6 +8,8 @@ import Dashboard from './Dashboard'
 import VoteContent from './VoteContent'
 import CreateNewPoll from './CreateNewPoll'
 import Leaderboard from './Leaderboard'
+import Login from './Login'
+import CreateUser from './CreateUser'
 
 
 class App extends Component {
@@ -22,8 +24,13 @@ class App extends Component {
                     <LoadingBar />
                     <div className='container'>
                         <Nav />
-                        {this.props.loading === true
-                            ? null
+                        {this.props.reqLogin === true
+                            ? <div>
+                                <Switch>
+                                    <Route path='/createUser' component={CreateUser} exact />
+                                    <Route path='/' component={Login} />
+                                </Switch>
+                              </div>
                             :  <div>
                                     <Route path='/' exact component={Dashboard} />
                                     <Route path='/questions/:id' component={VoteContent} />
@@ -40,7 +47,7 @@ class App extends Component {
 
 function mapStateToProps({authedUser}) {
     return {
-        loading: authedUser === null
+        reqLogin: authedUser === null
     }
 }
 

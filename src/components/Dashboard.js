@@ -3,12 +3,10 @@ import { connect } from 'react-redux'
 import Title from './Title'
 
 
-// TODO: Sorting by timestamps
-
 
 class Dashboard extends Component {
     state = {
-        btnActive: 'answered',
+        btnActive: 'unanswered',
     }
 
     intoVote = (e, id) => {
@@ -48,7 +46,7 @@ class Dashboard extends Component {
                             return id in users[authedUser].answers ? false : true
                         }
                     }).map((id) => (
-                        <a key={id} className='list-group-item list-group-item-action' onClick={(e) => this.intoVote(e, id)}>
+                        <a key={id} className='list-group-item list-group-item-action' href='#' onClick={(e) => this.intoVote(e, id)}>
                             {questions[id].optionOne.text} <strong>OR</strong> {questions[id].optionTwo.text} ?
                         </a>
                     ))}

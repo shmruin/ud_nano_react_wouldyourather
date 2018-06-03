@@ -2,6 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
+    password: 'sarahedo',
     avatarURL: 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
@@ -14,7 +15,8 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350',
+    password: 'tylermcginnis',
+    avatarURL: 'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/terminal05/2012/5/17/9/enhanced-buzz-5825-1337260190-1.jpg?downsize=715:*&output-format=auto&output-quality=auto',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +26,8 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350',
+    password: 'johndoe',
+    avatarURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSCWNrXSbTn-tdqQ9TMAYOy-NSpy5nozKfphCc0dL02OdSfoqf1g',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -189,5 +192,31 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
 
       res()
     }, 500)
+  })
+}
+
+function formatUser({id, name, password, imgUrl}) {
+  return {
+    id,
+    name,
+    password,
+    avatarURL: imgUrl,
+    answers: {},
+    questions: [],
+  }
+}
+
+export function _saveUser(user) {
+  return new Promise((res, rej) => {
+    const formattedUser = formatUser(user)
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [formattedUser.id]: formattedUser
+      }
+
+      res(formattedUser)
+    }, 1000)
   })
 }
