@@ -6,6 +6,10 @@ import BootstrapTable from 'react-bootstrap-table-next'
 import paginationFactory from 'react-bootstrap-table2-paginator'
 
 
+function imageFormatter(cell, row) {
+    return (<span><img src={cell} className='img-fluid rounded-circle' width='40' height='40' /></span>)
+}
+
 class Table extends Component {
     static propTypes = {
         users: PropTypes.object.isRequired,
@@ -17,6 +21,10 @@ class Table extends Component {
         columns: [{
             dataField: 'rank',
             text: '#'
+        }, {
+            dataField: 'avatar',
+            formatter: imageFormatter,
+            text: 'avatar',
         },
         {
             dataField: 'userid',
@@ -55,6 +63,7 @@ class Table extends Component {
 
             return {
                 'rank': index+1,
+                'avatar': users[id].avatarURL,
                 'userid': id,
                 'askings': numAskings,
                 'answers': numAnswers,

@@ -7,7 +7,7 @@ export default function Title(props) {
     return (
         <div className='container'>
             <h2 className='dashboard-title text-center mt-5'>{props.mainTitle}</h2>
-            <blockquote className="blockquote text-muted text-center mb-5">
+            <blockquote className="blockquote text-muted text-center">
                 <p>{props.subTitle}</p>
             </blockquote>
         </div>

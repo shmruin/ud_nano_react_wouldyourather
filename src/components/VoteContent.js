@@ -47,11 +47,19 @@ class VoteContent extends Component {
     }
 
     render() {
+        
+        let questionAuthor = this.props.questions[this.props.id].author
+
         return (
             <div className='container w-75'>
                 {this.state.isAnswered === true
                     ? <Fragment>
                         <Title mainTitle='People Rather...' subTitle='See the results!' />
+                        <div className='container w-75 my-0 py-0 text-center'>
+                            <span className='text-muted'>Posted by  </span>
+                            <img src={this.props.users[questionAuthor].avatarURL} className='img-fluid rounded-circle' width='40' height='40' />
+                            <span> {questionAuthor}</span>
+                        </div>
                         <AorB onSelectOption={this.onNotSelectOption} selected={this.state.selected} qid={this.props.id} />
                       </Fragment>
                     : <Fragment>
@@ -65,7 +73,7 @@ class VoteContent extends Component {
 }
 
 
-function mapStateToProps({ users, authedUser }, props) {
+function mapStateToProps({ users, questions, authedUser }, props) {
     const { id } = props.match.params
 
     //Check if question is already answered and set state to these values priorly.
@@ -75,6 +83,8 @@ function mapStateToProps({ users, authedUser }, props) {
     return {
         isAnswered,
         selected,
+        questions,
+        users,
         id,
         authedUser: authedUser,
     }
